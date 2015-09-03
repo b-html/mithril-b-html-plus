@@ -6,6 +6,12 @@ A template language based on [b-html-plus][b-html/b-html-plus] for [Mithril][lho
 2. [mithril-b-html-plus][b-html/mithril-b-html-plus] is [b-html-plus][b-html/b-html-plus] + [Mithril's VirtualElement signature](http://lhorie.github.io/mithril/mithril.render.html#signature) formatter.
 3. [mithril-b-html-plus][b-html/mithril-b-html-plus] is [b-html][b-html/b-html]++
 
+## Installation
+
+```
+$ npm install mithril-b-html-plus
+```
+
 ## Badge
 
 [![Circle CI](https://circleci.com/gh/b-html/mithril-b-html-plus.svg?style=svg)](https://circleci.com/gh/b-html/mithril-b-html-plus)
