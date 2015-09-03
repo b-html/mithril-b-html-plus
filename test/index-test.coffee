@@ -298,3 +298,49 @@ describe 'index', ->
         ]
         template = bHtml source
         assert.deepEqual template(context), expected
+
+  context '@b-text', ->
+    context 'simple', ->
+      it 'works', ->
+        source = '''
+          <p
+            @b-text message
+        '''
+        context =
+          message: 'hello!'
+        expected = [
+          tag: 'p'
+          attrs: {}
+          children: [
+            'hello!'
+          ]
+        ]
+        template = bHtml source
+        assert.deepEqual template(context), expected
+
+    context 'complex', ->
+      it 'works', ->
+        source = '''
+          <p
+            @class user
+            <span
+              @class user-name
+              @b-text user.name
+              dummy text
+        '''
+        context =
+          user:
+            name: 'bouzuya'
+        expected = [
+          tag: 'p'
+          attrs:
+            class: 'user'
+          children: [
+            tag: 'span'
+            attrs:
+              class: 'user-name'
+            children: ['bouzuya']
+          ]
+        ]
+        template = bHtml source
+        assert.deepEqual template(context), expected
