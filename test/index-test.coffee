@@ -196,6 +196,10 @@ describe 'index', ->
         template = bHtml source
         assert.deepEqual template(context), expected
 
+  context.skip '@b-html', ->
+    it 'doesn\'t work', ->
+      assert.fail()
+
   context '@b-if', ->
     context 'simple', ->
       it 'works', ->
