@@ -196,6 +196,42 @@ describe 'index', ->
         template = bHtml source
         assert.deepEqual template(context), expected
 
+  context '@b-attr', ->
+    context 'simple', ->
+      it 'works', ->
+        source = '''
+          </img
+            @b-attr src: src
+        '''
+        context =
+          src: '/images/1.png'
+        expected = [
+          tag: 'img'
+          attrs:
+            src: '/images/1.png'
+        ]
+        template = bHtml source
+        assert.deepEqual template(context), expected
+
+    context 'complex', ->
+      it 'works', ->
+        source = '''
+          </img
+            @b-attr alt: image.alt, src: image.src
+        '''
+        context =
+          image:
+            alt: 'sample'
+            src: '/images/2.png'
+        expected = [
+          tag: 'img'
+          attrs:
+            alt: 'sample'
+            src: '/images/2.png'
+        ]
+        template = bHtml source
+        assert.deepEqual template(context), expected
+
   context.skip '@b-html', ->
     it 'doesn\'t work', ->
       assert.fail()
