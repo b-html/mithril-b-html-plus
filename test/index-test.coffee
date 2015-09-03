@@ -1,7 +1,14 @@
 assert = require 'power-assert'
+sinon = require 'sinon'
 bHtml = require './'
 
 describe 'index', ->
+  beforeEach ->
+    @sinon = sinon.sandbox.create()
+
+  afterEach ->
+    @sinon.restore()
+
   context 'comment', ->
     context 'simple', ->
       it 'works', ->
@@ -384,3 +391,28 @@ describe 'index', ->
         ]
         template = bHtml source
         assert.deepEqual template(context), expected
+
+  context 'mithril.component', ->
+    context 'simple', ->
+      it 'works', ->
+        dummy = {}
+        MyComponent =
+          view: ->
+        source = '''
+          <my-component
+        '''
+        context =
+          mithril:
+            component: @sinon.stub().returns(dummy)
+          'my-component': MyComponent
+        expected = [dummy]
+        template = bHtml source
+        assert.deepEqual template(context), expected
+        component = context.mithril.component
+        assert component.callCount is 1
+        assert component.getCall(0).args[0] is MyComponent
+        assert.deepEqual component.getCall(0).args[1], {}
+
+    context.skip 'complex', ->
+      it 'doesn\'t works', ->
+        # TODO: nested component
