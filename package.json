@@ -1,7 +1,7 @@
 {
   "name": "mithril-b-html-plus",
   "description": "A template language based on b-html-plus for Mithril",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": {
     "name": "bouzuya",
     "email": "m@bouzuya.net",
