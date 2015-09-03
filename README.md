@@ -1,5 +1,7 @@
 # mithril-b-html-plus
 
+**This package is alpha version.**
+
 A template language based on [b-html-plus][b-html/b-html-plus] for [Mithril][lhorie/mithril.js].
 
 1. [b-html-plus][b-html/b-html-plus] is [b-html][b-html/b-html] + b-html-plus formatter
