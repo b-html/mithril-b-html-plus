@@ -1,0 +1,52 @@
+{
+  "name": "mithril-b-html-plus",
+  "description": "A template language based on b-html-plus for Mithril",
+  "version": "0.0.0",
+  "author": {
+    "name": "bouzuya",
+    "email": "m@bouzuya.net",
+    "url": "http://bouzuya.net"
+  },
+  "bugs": {
+    "url": "https://github.com/b-html/mithril-b-html-plus/issues"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.9.3",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-espower": "^0.10.1",
+    "gulp-mocha": "^2.1.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.4",
+    "power-assert": "^0.11.0",
+    "run-sequence": "^1.1.2"
+  },
+  "files": [
+    "lib",
+    "index.js",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "homepage": "https://github.com/b-html/mithril-b-html-plus#readme",
+  "keywords": [
+    "HTML",
+    "b-html",
+    "mithril"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-html/mithril-b-html-plus.git"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "prepublish": "gulp",
+    "test": "gulp test",
+    "watch": "gulp watch"
+  }
+}
