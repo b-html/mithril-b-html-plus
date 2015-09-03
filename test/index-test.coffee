@@ -131,3 +131,35 @@ describe 'index', ->
         ]
         template = bHtml source
         assert.deepEqual template(context), expected
+
+  context 'new line text', ->
+    context 'simple', ->
+      it 'works', ->
+        source = '''
+          |text
+        '''
+        context = {}
+        expected = ['\ntext']
+        template = bHtml source
+        assert.deepEqual template(context), expected
+
+    context 'complex', ->
+      it 'works', ->
+        source = '''
+          |line1
+          <p
+            |line2
+            |line3
+        '''
+        context = {}
+        expected = [
+          '\nline1'
+          tag: 'p'
+          attrs: {}
+          children: [
+            '\nline2'
+            '\nline3'
+          ]
+        ]
+        template = bHtml source
+        assert.deepEqual template(context), expected
