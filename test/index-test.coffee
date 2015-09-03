@@ -92,3 +92,42 @@ describe 'index', ->
         ]
         template = bHtml source
         assert.deepEqual template(context), expected
+
+  context 'empty element', ->
+    context 'simple', ->
+      it 'works', ->
+        source = '''
+          </img
+        '''
+        context = {}
+        expected = [
+          tag: 'img'
+          attrs: []
+        ]
+        template = bHtml source
+        assert.deepEqual template(context), expected
+
+    context 'complex', ->
+      it 'works', ->
+        source = '''
+          </img
+            @b-repeat i in images
+            @b-attr src: i.src
+        '''
+        context =
+          images: [
+            src: '/images/1.png'
+          ,
+            src: '/images/2.png'
+          ]
+        expected = [
+          tag: 'img'
+          attrs:
+            src: '/images/1.png'
+        ,
+          tag: 'img'
+          attrs:
+            src: '/images/2.png'
+        ]
+        template = bHtml source
+        assert.deepEqual template(context), expected
