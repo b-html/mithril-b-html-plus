@@ -27,3 +27,18 @@ describe 'index', ->
         ]
         template = bHtml source
         assert.deepEqual template(context), expected
+
+  context 'doctype', ->
+    context 'simple', ->
+      it 'works', ->
+        source = '''
+          <!doctype html
+        '''
+        context = {}
+        expected = []
+        template = bHtml source
+        assert.deepEqual template(context), expected
+
+    context 'complex', ->
+      it 'works', ->
+        # no tests
