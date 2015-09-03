@@ -195,3 +195,37 @@ describe 'index', ->
         ]
         template = bHtml source
         assert.deepEqual template(context), expected
+
+  context '@b-if', ->
+    context 'simple', ->
+      it 'works', ->
+        source = '''
+          <p
+            @b-if isShow
+        '''
+        context =
+          isShow: false
+        expected = []
+        template = bHtml source
+        assert.deepEqual template(context), expected
+
+    context 'complex', ->
+      it 'works', ->
+        source = '''
+          <p
+            @b-if parent
+            <span
+              @b-if child
+              hide
+            show
+        '''
+        context =
+          parent: true
+          child: false
+        expected = [
+          tag: 'p'
+          attrs: {}
+          children: ['show']
+        ]
+        template = bHtml source
+        assert.deepEqual template(context), expected
